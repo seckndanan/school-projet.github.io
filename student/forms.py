@@ -94,23 +94,23 @@ class EmergencyContactDetailsForm(forms.ModelForm):
             'email': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-class PreviousAcademicInfoForm(forms.ModelForm):
-    class Meta:
-        model = PreviousAcademicInfo
-        fields = '__all__'
-        widgets = {
-            'institute_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'name_of_exam': forms.TextInput(attrs={'class': 'form-control'}),
-            'group': forms.TextInput(attrs={'class': 'form-control'}),
-            'gpa': forms.TextInput(attrs={'class': 'form-control'}),
-            'board_roll': forms.TextInput(attrs={'class': 'form-control'}),
-            'passing_year': forms.TextInput(attrs={'class': 'form-control'}),
-        }
+#class PreviousAcademicInfoForm(forms.ModelForm):
+ #   class Meta:
+ #       model = PreviousAcademicInfo
+ #       fields = '__all__'
+ #       widgets = {
+  #          'institute_name': forms.TextInput(attrs={'class': 'form-control'}),
+  #          'name_of_exam': forms.TextInput(attrs={'class': 'form-control'}),
+  #          'group': forms.TextInput(attrs={'class': 'form-control'}),
+  #          'gpa': forms.TextInput(attrs={'class': 'form-control'}),
+  #          'board_roll': forms.TextInput(attrs={'class': 'form-control'}),
+  #          'passing_year': forms.TextInput(attrs={'class': 'form-control'}),
+  #      }
 
-class PreviousAcademicCertificateForm(forms.ModelForm):
-    class Meta:
-        model = PreviousAcademicCertificate
-        fields = '__all__'
+#class PreviousAcademicCertificateForm(forms.ModelForm):
+ #   class Meta:
+#        model = PreviousAcademicCertificate
+#        fields = '__all__'
 
 class StudentSearchForm(forms.Form):
     class_info = forms.ModelChoiceField(required=False, queryset=ClassInfo.objects.all())

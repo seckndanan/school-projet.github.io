@@ -37,7 +37,7 @@ class PersonalInfo(models.Model):
     )
     religion = models.CharField(choices=religion_choice, max_length=45)
     nationality_choice = (
-        ('Bangladeshi', 'Bangladeshi'),
+        ('Senegalais', 'Senegalaise'),
         ('Others', 'Others')
     )
     nationality = models.CharField(choices=nationality_choice, max_length=45)
@@ -47,8 +47,8 @@ class PersonalInfo(models.Model):
 
 class StudentAddressInfo(models.Model):
     district = models.ForeignKey(District, on_delete=models.CASCADE)
-    upazilla = models.ForeignKey(Upazilla, on_delete=models.CASCADE)
-    union = models.ForeignKey(Union, on_delete=models.CASCADE)
+   # upazilla = models.ForeignKey(Upazilla, on_delete=models.CASCADE)
+    #union = models.ForeignKey(Union, on_delete=models.CASCADE)
     village = models.TextField()
 
     def __str__(self):
@@ -72,7 +72,7 @@ class GuardianInfo(models.Model):
         ('N/A', 'N/A'),
     )
     father_occupation = models.CharField(choices=father_occupation_choice, max_length=45)
-    father_yearly_income = models.IntegerField()
+    father_yearly_income = models.IntegerField(null=True)
     mother_name = models.CharField(max_length=100)
     mother_phone_no = models.CharField(max_length=11)
     mother_occupation_choice = (
@@ -90,8 +90,8 @@ class GuardianInfo(models.Model):
         ('N/A', 'N/A'),
     )
     mother_occupation = models.CharField(choices=mother_occupation_choice, max_length=45)
-    guardian_name = models.CharField(max_length=100)
-    guardian_phone_no = models.CharField(max_length=11)
+    guardian_name = models.CharField(max_length=100,null=True)
+    guardian_phone_no = models.CharField(max_length=11,null=True)
     guardian_email = models.EmailField(blank=True, null=True)
     relationship_choice = (
         ('Father', 'Father'),
@@ -122,24 +122,24 @@ class EmergencyContactDetails(models.Model):
     def __str__(self):
         return self.emergency_guardian_name
 
-class PreviousAcademicInfo(models.Model):
-    institute_name = models.CharField(max_length=100)
-    name_of_exam = models.CharField(max_length=100)
-    group = models.CharField(max_length=45)
-    gpa = models.CharField(max_length=10)
-    board_roll = models.IntegerField()
-    passing_year = models.IntegerField()
+#class PreviousAcademicInfo(models.Model):
+#    institute_name = models.CharField(max_length=100)
+ #   name_of_exam = models.CharField(max_length=100)
+ #   group = models.CharField(max_length=45)
+ #   gpa = models.CharField(max_length=10)
+ #   board_roll = models.IntegerField()
+ #   passing_year = models.IntegerField()
 
-    def __str__(self):
-        return self.institute_name
+   # def __str__(self):
+   #     return self.institute_name
 
-class PreviousAcademicCertificate(models.Model):
-    birth_certificate = models.FileField(upload_to='documents/', blank=True)
-    release_letter = models.FileField(upload_to='documents/', blank=True)
-    testimonial = models.FileField(upload_to='documents/', blank=True)
-    marksheet = models.FileField(upload_to='documents/', blank=True)
-    stipen_certificate = models.FileField(upload_to='documents/', blank=True)
-    other_certificate = models.FileField(upload_to='documents/', blank=True)
+##class PreviousAcademicCertificate(models.Model):
+  ##  birth_certificate = models.FileField(upload_to='documents/', blank=True)
+    #release_letter = models.FileField(upload_to='documents/', blank=True)
+    #testimonial = models.FileField(upload_to='documents/', blank=True)
+    #marksheet = models.FileField(upload_to='documents/', blank=True)
+    #stipen_certificate = models.FileField(upload_to='documents/', blank=True)
+    #other_certificate = models.FileField(upload_to='documents/', blank=True)
 
 class AcademicInfo(models.Model):
     class_info = models.ForeignKey(ClassInfo, on_delete=models.CASCADE)
@@ -156,8 +156,8 @@ class AcademicInfo(models.Model):
     address_info = models.ForeignKey(StudentAddressInfo, on_delete=models.CASCADE, null=True)
     guardian_info = models.ForeignKey(GuardianInfo, on_delete=models.CASCADE, null=True)
     emergency_contact_info = models.ForeignKey(EmergencyContactDetails, on_delete=models.CASCADE, null=True)
-    previous_academic_info = models.ForeignKey(PreviousAcademicInfo, on_delete=models.CASCADE, null=True)
-    previous_academic_certificate = models.ForeignKey(PreviousAcademicCertificate, on_delete=models.CASCADE, null=True)
+#    previous_academic_info = models.ForeignKey(PreviousAcademicInfo, on_delete=models.CASCADE, null=True)
+#    previous_academic_certificate = models.ForeignKey(PreviousAcademicCertificate, on_delete=models.CASCADE, null=True)
     date = models.DateField(auto_now_add=True)
     is_delete = models.BooleanField(default=False)
 
